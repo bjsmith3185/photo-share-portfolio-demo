@@ -33,8 +33,8 @@ class Users extends Component {
     
     API.addUser(data)
     .then(res => {
-      console.log("new user added");
-      console.log(res.data);
+      // console.log("new user added");
+      // console.log(res.data);
       
        })
     .catch(err => console.log(err));

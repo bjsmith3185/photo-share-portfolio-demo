@@ -86,8 +86,8 @@ class Admin extends Component {
 
     API.getUser(_id)
       .then(res => {
-        console.log("users info")
-        console.log(res.data)
+        // console.log("users info")
+        // console.log(res.data)
 
         if (res.data === null) {
           this.setState({
@@ -125,8 +125,8 @@ class Admin extends Component {
 
     API.addUser(newUser)
       .then((res) => {
-        console.log("added new user to database")
-        console.log(res.data)
+        // console.log("added new user to database")
+        // console.log(res.data)
         this.getAllUsers();
       })
       .catch(error => {
@@ -247,7 +247,7 @@ class Admin extends Component {
 
     API.removeAllPictures()
       .then((res) => {
-        console.log("removed all pictures")
+        // console.log("removed all pictures")
         // console.log(res.data)
         this.viewAllUsers();
       })

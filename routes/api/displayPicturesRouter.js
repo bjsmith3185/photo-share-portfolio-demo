@@ -45,13 +45,13 @@ router.route("/:id")
 
 router.route("/:id")
   .put((req, res) => {
-    console.log("!!!!!!!!!!!!!!!!!!!updating displayPictures")
-    console.log(req.params.id)
-    console.log(req.body)
+    // console.log("!!!!!!!!!!!!!!!!!!!updating displayPictures")
+    // console.log(req.params.id)
+    // console.log(req.body)
     displayPictures.update(req.params.id, req.body)
       .then(dbresults => {
-        console.log("this is the return for update displaypictures")
-        console.log(dbresults)
+        // console.log("this is the return for update displaypictures")
+        // console.log(dbresults)
         res.json(dbresults)
       })
       .catch(err => res.status(422).json(err))
@@ -76,7 +76,7 @@ router.route("/")
 
 router.route("/:id")
   .delete((req, res) => {
-    console.log("deleting all user id's: " + req.params.id)
+    // console.log("deleting all user id's: " + req.params.id)
     displayPictures.removeMany(req.params.id)
       .then(dbresults => res.json(dbresults))
       .catch(err => res.status(422).json(err))

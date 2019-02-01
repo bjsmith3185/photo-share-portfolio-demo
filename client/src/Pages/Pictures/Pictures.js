@@ -105,7 +105,7 @@ class Pictures extends Component {
     let email = sessionStorage.getItem("email")
     let name = sessionStorage.getItem("name");
     let _id = sessionStorage.getItem("_id");
-    console.log(`setting user info: ${name}, ${email}, ${_id}`)
+    // console.log(`setting user info: ${name}, ${email}, ${_id}`)
     this.setState({
       name: name,
       email: email,

@@ -45,11 +45,8 @@ router.route("/")
         let data = {
 
           // image: "http://localhost:3001/api/pictures/" + dbresults._id
-          image: "https://powerful-eyrie-82524.herokuapp.com/api/pictures/" + dbresults._id
+          image: "https://morning-garden-46388.herokuapp.com/api/pictures/" + dbresults._id
 
-
-          //  image: dbresults.encodedImage.data.toString()
-          // image: dbresults._id
         }
 
         pictures.update(dbresults._id, data)
@@ -83,13 +80,13 @@ router.route("/:picture")
 // route to add note
 router.route("/note/:picture")
   .put((req, res) => {
-    console.log("inside the add note route")
-    console.log(req.params.picture)
-    console.log(req.body)
+    // console.log("inside the add note route")
+    // console.log(req.params.picture)
+    // console.log(req.body)
     pictures.addNote(req.params.picture, req.body)
       .then(dbresults => {
-        console.log("this is the return with populated note")
-        console.log(dbresults)
+        // console.log("this is the return with populated note")
+        // console.log(dbresults)
         res.json(dbresults)
       })
       .catch(err => res.status(422).json(err))
@@ -101,8 +98,8 @@ router.route("/:id")
   .put((req, res) => {
     pictures.update(req.params.id, req.body)
       .then(dbresults => {
-        console.log("this is the return for update picture")
-        console.log(dbresults)
+        // console.log("this is the return for update picture")
+        // console.log(dbresults)
         res.json(dbresults)
       })
       .catch(err => res.status(422).json(err))

@@ -30,7 +30,7 @@ class SignIn extends Component {
   // }
 
   login = (event) => {
-    console.log("logging in to app")
+    // console.log("logging in to app")
     sessionStorage.clear();
     event.preventDefault();
 

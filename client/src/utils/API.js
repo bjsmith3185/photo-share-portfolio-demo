@@ -90,7 +90,7 @@ export default {
     // multiple files are much more difficult. let's keep the user doing one at a time
     // might want to change all references to 'uploadFiles' to 'uploadFile'
 
-    console.log(file);
+    // console.log(file);
     const formData = new FormData();
     formData.append('image', file, file.name);
 
@@ -115,9 +115,9 @@ export default {
   // route /api/comments
 
   addPictureNote: function (data) {
-    console.log("api for add note")
+    // console.log("api for add note")
 
-    console.log(data)
+    // console.log(data)
     return axios.post('/api/comments', data);
   },
 

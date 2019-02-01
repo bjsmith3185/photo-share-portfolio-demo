@@ -66,8 +66,8 @@ class Account extends Component {
 
     API.getUser(_id)
       .then(res => {
-        console.log("users info")
-        console.log(res.data)
+        // console.log("users info")
+        // console.log(res.data)
 
         if (res.data === null) {
           this.setState({
@@ -98,7 +98,7 @@ class Account extends Component {
 
 
   viewUpdateName = () => {
-    console.log("clicked name")
+    // console.log("clicked name")
     if (this.state.showUpdateName === false) {
       this.setState({
         showUpdateName: true,
@@ -111,7 +111,7 @@ class Account extends Component {
   };
 
   updateName = () => {
-    console.log("updating name")
+    // console.log("updating name")
     let data = {
       name: this.state.newName,
     }
@@ -143,7 +143,7 @@ class Account extends Component {
   }
 
   updateEmail = () => {
-    console.log("clicked password")
+    // console.log("clicked password")
     let data = {
       email: this.state.newEmail,
     }
@@ -176,7 +176,7 @@ class Account extends Component {
   }
 
   updatePassword = () => {
-    console.log("clicked password")
+    // console.log("clicked password")
     let data = {
       password: this.state.newPassword,
     }
