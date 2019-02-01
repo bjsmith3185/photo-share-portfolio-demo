@@ -1,0 +1,91 @@
+
+database: pictureshare
+collections: users, pictures, comments, displayPictures(for each user)
+
+
+
+Picture Sharing
+
+
+- login
+    - email
+    - password
+    - forgot email/password
+
+-----------------------------------------------------
+- user page
+    - personal info
+        - change email
+        - change password
+        - update name?
+
+    - edit/modify pictures
+        - add new
+        - remove
+        - delete picuture note added by specific user
+
+    - search
+        - search by date
+        - search by person name
+        - search by place
+
+    - recent changes (add a notification to this title when there is something new)
+        - view most recent uploads
+        - view most recent notes
+
+---------------------------------------------------------
+- manager page
+    - pictures
+        - upload pictures
+        - remove pictures
+
+
+    - manage users
+        - add new
+        - remove
+        - update email/password
+
+-----------------------------------------------------------
+- actual picture image
+    - add note (with users name)
+    - add person name
+    - add location
+    - share (email/txt)
+    - save to favorites (by user)
+
+----------------------------------------------------------
+
+How pictures will be displayed
+
+- grid
+- carosel (with timer)
+- full screen (with timer/ left and right click)
+
+
+
+=========================================================
+
+create a collection users   
+    - user name
+    - user email
+    - favorites by _id
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

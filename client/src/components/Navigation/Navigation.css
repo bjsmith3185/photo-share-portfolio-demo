@@ -1,0 +1,23 @@
+
+.nav-area {
+    background: black;
+    width: 100%;
+}
+.nav-link {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 25px;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block
+
+}
+
+.nav-signout {
+   float: right;
+   margin-top: 10px;
+   margin-right: 10px;
+   cursor: pointer;
+   color: white;
+}

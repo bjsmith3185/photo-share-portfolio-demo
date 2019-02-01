@@ -1,0 +1,165 @@
+
+
+.list-li {
+  /* margin-top: 15px; */
+  position: relative;
+  color: black;
+  font-weight: bolder;
+  font-size: 20px;
+  border: 2px solid black;
+  height: auto;
+  width: 208px;
+  /* margin-left: 15px;
+  margin-bottom: 55px; */
+  padding: 2px;
+margin: 15px;
+display: inline-block;
+
+}
+
+/* .picturelist-img-box {
+  position: relative;
+  width: 204px;
+  height: auto;
+   
+  border: 2px solid black;
+  margin: 15px;
+} */
+
+.picturelist-img {
+  height: 200px;
+  width: 200px;
+  /* align-items: center;
+  justify-content: center;
+  object-fit: scale-down; */
+}
+
+
+
+.picturelist-toolbar {
+  position: relative;
+  width: 100%;
+  padding-left: 2px;
+  padding-right: 2px;
+  height: auto;
+
+}
+
+.picturelist-rotate {
+  /* height: 15px; */
+  width: 40px;
+  /* background: lightblue; */
+  /* border: 1px solid black; */
+  color: blue;
+  font-size: 18px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  /* padding: 1px; */
+  cursor: pointer;
+}
+
+.picturelist-rotate:hover {
+  /* background: rgb(62, 191, 235); */
+  /* border: 1px solid white; */
+  color: rgb(142, 142, 238);
+
+}
+
+
+.picturelist-fav {
+  width: 40px;
+  /* border: 1px solid black; */
+  font-size: 14px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 1px;
+  height: auto;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+.heart {
+  background-color: red;
+  height: 10px;
+  transform: rotate(-45deg);
+  width: 10px;
+  margin: 0 auto;
+}
+
+.heart:before,
+.heart:after {
+  content: "";
+  background-color: red;
+  border-radius: 50%;
+  height: 10px;
+  position: absolute;
+  width: 10px;
+}
+
+.heart:before {
+  top: -5px;
+  left: 0;
+}
+
+
+.heart:hover {
+  background: pink;
+}
+
+.heart:hover::before {
+  background: pink;
+}
+
+.heart:hover::after {
+  background: pink;
+}
+
+
+.plus {
+  
+}
+
+
+
+.picturelist-info {
+  /* position: absolute;
+  top: 226px;
+  left: 0px;
+  z-index: 4; */
+  margin-top: 25px;
+  width: 100%;
+  border-bottom: 1px solid black;
+  font-weight: bold;
+  color: blue;
+  font-size: 12px;
+}
+
+/* .picturelist-name {
+
+  border: 1px solid red;
+  width: 100%;
+  color: blue;
+  font-size: 12px;
+
+} */
+
+.picturelist-note {
+  width: 100%;
+  
+}
+
+.picturelist-noteinput-button {
+  font-size: 10px;
+  background: darkgray;
+  color: black;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+.picturelist-noteinput-button:hover {
+  background: rgb(247, 225, 225);
+  color: rgb(92, 90, 90);
+
+}

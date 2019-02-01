@@ -1,0 +1,84 @@
+
+
+.userinfo-line {
+  margin-top: 10px;
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px;
+}
+
+.update-button {
+  margin-left: 15px;
+  height: 20px;
+  font-size: 14px;
+  background: orange;
+  color: white;
+  width: 50px;
+  padding: 2px;
+  border: 1px solid gray;
+  border-radius: 2px;
+}
+
+.update-button:hover {
+  background: rgb(247, 188, 80);
+  color: rgb(141, 139, 139);
+  border: 1px solid black;
+}
+
+.userinfo-update-btn {
+  margin-left: 5px;
+  height: 20px;
+  font-size: 14px;
+  background: green;
+  color: black;
+  width: 50px;
+  padding: 2px;
+  border: 1px solid gray;
+  border-radius: 2px;
+}
+
+.userinfo-update-btn:hover {
+  background: rgb(86, 235, 86);
+  color: white;
+  border: 1px solid black;
+}
+
+.userinfo-back {
+  margin-left: 20px;
+  height: 20px;
+  font-size: 14px;
+  width: 30px;
+  background: red;
+  color: black;
+  border: 1px solid gray;
+  border-radius: 2px;
+  padding: 3px;
+}
+
+.userinfo-back:hover {
+  background: rgb(241, 109, 109);
+  color: white;
+  border: 1px solid black;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,58 @@
+
+currently:
+
+
+admin vs account pages
+
+all users have an account page.
+
+if user.admin = true
+    - navbar show link to adminpage
+
+
+
+
+
+===================================================
+
+Landing page with navbar to allow user to sign in;
+
+Sign In Page:
+
+    - enter email
+    - password
+    - submit button
+
+    - forgot password link
+
+    - clear session storage on page load
+
+    
+=====================
+
+signin:
+    - pass:
+        - check if admin
+        - set session storage with 
+            - name
+            - email
+            - _id
+            - admin
+
+    - fail:
+        - show error message
+        - clear inputs
+
+
+
+
+
+
+
+
+
+
+
+
+
+

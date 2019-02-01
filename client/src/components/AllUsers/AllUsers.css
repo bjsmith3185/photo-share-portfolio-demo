@@ -1,0 +1,15 @@
+
+
+.allusers-elements {
+  margin-right: 10px;
+}
+
+.allusers-update {
+  color: blue;
+  font-weight: bold;
+}
+
+.allusers-delete {
+  color: red;
+  font-weight: bold;
+}

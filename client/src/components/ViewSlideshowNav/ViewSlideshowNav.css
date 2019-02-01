@@ -1,0 +1,17 @@
+
+
+.pictureviewnav-container {
+
+  padding: 5px;
+  background: black;
+
+}
+
+
+.pictureviewnav {
+  margin: 5px 10px;
+  font-size: 16px;
+  font-weight: bolder;
+  color: red;
+  cursor: pointer;
+}
