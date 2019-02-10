@@ -1,6 +1,4 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { compose } from 'recompose';
+import React from 'react';
 import API from '../../utils/API';
 
 import * as ROUTES from '../../constants/routes';
@@ -11,8 +9,8 @@ export default class PopulateUsersPage extends React.Component {
   populateUsers = () => {
     API.populateUsers()
       .then(res => {
-        // console.log("populate users")
-        // console.log(res.data)
+        console.log("populate users")
+        console.log(res.data)
       })
       .catch(err => console.log(err));
   };
@@ -20,8 +18,8 @@ export default class PopulateUsersPage extends React.Component {
   removePictures = () => {
     API.removePicures()
     .then(res => {
-      // console.log("removed all saved pictures")
-      // console.log(res.data)
+      console.log("removed all saved pictures")
+      console.log(res.data)
     })
     .catch(err => console.log(err));
   }

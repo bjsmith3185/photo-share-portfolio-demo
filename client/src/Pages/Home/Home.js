@@ -104,12 +104,12 @@ class HomePage extends Component {
           signOut={this.signOut}
         />
         <UserIdBar name={this.state.name} />
-        <h1>This is the home page</h1>
+        <h1 className="home-title text-center">Welcome to the Picture-Share App!</h1>
 
         {this.state.loggedIn ? (
           <div>
-            <div className="home-usertitle text-center">
-              Welome back {this.state.name}.
+            <div className="home-title-name text-center">
+              Good to see you {this.state.name}.
             </div>
           </div>
         ) : (

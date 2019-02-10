@@ -39,6 +39,11 @@ module.exports = {
       .findOne({ _id: id })
   },
 
+  findByOnline: function () {
+    return db.Users
+    .find({loggedIn: true})
+  },
+
   findByName: function (name) {
     // console.log("########### usercontroller")
     // console.log(name)
@@ -49,6 +54,7 @@ module.exports = {
   create: function (data) {
     console.log("!!!")
     console.log(data)
+    // db.Users.createIndex( { favorites: 1 } )
     return db.Users
       .create(data)
   },

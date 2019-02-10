@@ -7,6 +7,7 @@ const AdminNavbar = (props) => (
 <div className="adminnavbar-container text-center">
   <span className="adminnavbar" onClick={props.viewAddNewUser}>Add New User</span>
   <span className="adminnavbar" onClick={props.viewAllUsers}>View All Users</span>
+  <span className="adminnavbar" onClick={props.viewOnlineUsers}>View Online Users</span>
   <span className="adminnavbar" onClick={props.viewRemovePicture}>Remove Picture</span>
 </div>
 

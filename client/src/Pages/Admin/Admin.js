@@ -7,6 +7,7 @@ import Navigation from '../../components/Navigation';
 import UserIdBar from '../../components/UserIdBar';
 import AdminNavbar from "../../components/AdminNavbar";
 import AllUsers from "../../components/AllUsers";
+import OnlineUsers from "../../components/OnlineUsers";
 import RemovePicture from '../../components/RemovePicture';
 import * as ROUTES from '../../constants/routes';
 // import PictureNavbar from '../../components/PictureNavbar';
@@ -38,6 +39,7 @@ class Admin extends Component {
     showAddNewUser: false,
     showAllUsers: false,
     showRemovePicture: false,
+    showOnlineUsers: false,
 
     usersView: false,
     allUsers: [],
@@ -48,7 +50,8 @@ class Admin extends Component {
     oldAdmin: "",
     idToUpdate: "",
 
-
+ 
+    onlineUsers: [],
 
 
   };
@@ -120,6 +123,7 @@ class Admin extends Component {
     let newUser = {
       name: this.state.username,
       email: this.state.useremail,
+      // favorites:[],
       // password: this.state.passwordOne,
     }
 
@@ -134,7 +138,45 @@ class Admin extends Component {
       });
   };
 
+  getOnlineUsers = () => {
+    API.getAllUsers()
+      .then(res => {
+        // console.log("all users info")
+        // console.log(res.data)
 
+        if (res.data === null) {
+          console.log("no users")
+        } else {
+          this.setState({
+            // usersView: true,
+            allUsers: res.data
+          })
+        }
+
+      })
+      .catch(error => {
+        console.log(error)
+      });
+
+    // API.getOnlineUsers()
+    //   .then(res => {
+    //     console.log("all online users info")
+    //     console.log(res.data)
+
+    //     if (res.data === null) {
+    //       console.log("no online users")
+    //     } else {
+    //       this.setState({
+    //         // usersView: true,
+    //         onlineUsers: res.data
+    //       })
+    //     }
+
+    //   })
+    //   .catch(error => {
+    //     console.log(error)
+    //   });
+  };
 
   getAllUsers = () => {
     API.getAllUsers()
@@ -247,7 +289,7 @@ class Admin extends Component {
 
     API.removeAllPictures()
       .then((res) => {
-        // console.log("removed all pictures")
+        console.log("removed all pictures")
         // console.log(res.data)
         this.viewAllUsers();
       })
@@ -263,6 +305,7 @@ class Admin extends Component {
       showAddNewUser: true,
       showAllUsers: false,
       showRemovePicture: false,
+      showOnlineUsers: false,
       username: "",
       useremail: "",
     })
@@ -273,6 +316,7 @@ class Admin extends Component {
       showAddNewUser: false,
       showAllUsers: true,
       showRemovePicture: false,
+      showOnlineUsers: false,
       username: "",
       useremail: "",
     })
@@ -285,7 +329,18 @@ class Admin extends Component {
       showAddNewUser: false,
       showAllUsers: false,
       showRemovePicture: true,
+      showOnlineUsers: false,
     })
+  };
+
+  viewOnlineUsers = () => {
+    this.setState({
+      showAddNewUser: false,
+      showAllUsers: false,
+      showRemovePicture: false,
+      showOnlineUsers: true,
+    })
+    this.getOnlineUsers();
   };
 
 
@@ -328,6 +383,7 @@ class Admin extends Component {
               viewAddNewUser={this.viewAddNewUser}
               viewAllUsers={this.viewAllUsers}
               viewRemovePicture={this.viewRemovePicture}
+              viewOnlineUsers={this.viewOnlineUsers}
             />
 
 
@@ -369,6 +425,15 @@ class Admin extends Component {
             ) : (
                 <div></div>
               )}
+
+            {this.state.showOnlineUsers ? (
+              <OnlineUsers
+                // onlineUsers={this.state.onlineUsers}
+                allUsers={this.state.allUsers}
+            />
+          ) : (
+                <div></div>
+            )}
 
             {this.state.showRemovePicture ? (
               <RemovePicture

@@ -31,8 +31,8 @@ router.route("/")
                 for (var i = 0; i < adminSeedArray.length; i++) {
                     populateUsers.create(adminSeedArray[i])
                         .then(dbresults => {
-                            // console.log("deleted and populated users collection")
-                            // console.log(dbresults);
+                            console.log("deleted and populated users collection")
+                            console.log(dbresults);
 
                         })
                         .catch(err => res.status(422).json(err))

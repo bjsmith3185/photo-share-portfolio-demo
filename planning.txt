@@ -2,6 +2,17 @@
 database: pictureshare
 collections: users, pictures, comments, displayPictures(for each user)
 
+TODO
+
+- clear new user inputs after submit
+- redirest to list of users after new user submit
+
+- add better text to the home page
+- add a confirm or something when deleting users or pictures
+
+
+
+-----------------------------
 
 
 Picture Sharing

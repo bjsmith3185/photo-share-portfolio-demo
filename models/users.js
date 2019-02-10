@@ -12,13 +12,20 @@ const UsersSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: "Pictures",
-      unique: true
+      default: "",
+      // unique: true
     }
   ],
   createdDate: { type: Date, default: Date.now },
   // timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }
   
 });
+
+// UsersSchema.index({
+//   favorites: 1
+// })
+
+
 
 const Users = mongoose.model("Users", UsersSchema);
 

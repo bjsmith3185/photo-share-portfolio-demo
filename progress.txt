@@ -2,6 +2,10 @@
 currently:
 
 
+
+added online status in admin page. (may add this if i add a chat function to the app)
+
+-----------------------------------
 admin vs account pages
 
 all users have an account page.
