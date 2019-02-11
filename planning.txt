@@ -1,11 +1,12 @@
 
+Heroku deployment for demo: powerful-eyrie-82524
+
 database: pictureshare
 collections: users, pictures, comments, displayPictures(for each user)
 
 TODO
 
-- clear new user inputs after submit
-- redirest to list of users after new user submit
+- add email option when new user is created.
 
 - add better text to the home page
 - add a confirm or something when deleting users or pictures

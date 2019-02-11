@@ -1,6 +1,11 @@
 const router = require("express").Router();
 const users = require("../../controllers/usersController");
 const usersHelper = require("../../routesHelper/userLogic");
+const email = require("../../nodeMailer/mailer");
+
+const nodemailer = require("nodemailer");
+
+require('dotenv').load()
 // Matches with "/api/users"
 
 router.route("/")
@@ -14,11 +19,11 @@ router.route("/")
 
 router.route("/online")
   .get((req, res) => {
-    console.log("inside find online users")
+    // console.log("inside find online users")
     users.findByOnline({})
       .then(dbresults => {
-        console.log("return for online users");
-        console.log(dbresults)
+        // console.log("return for online users");
+        // console.log(dbresults)
         res.json(dbresults)
       })
       .catch(err => res.status(422).json(err))
@@ -26,19 +31,18 @@ router.route("/online")
 
 router.route("/new")
   .post((req, res) => {
-    console.log("!!!!!!!!!!!")
-    console.log(req.body)
+    // console.log("!!!!!!!!!!!")
+    // console.log(req.body)
     users.create(req.body)
       .then(dbresults => {
-        console.log("????? ")
-        console.log(dbresults)
+        // console.log("getting ready to send email ")
+        // console.log(dbresults)
+        email.sendEmail(dbresults.email, dbresults.password)
+
         res.json(dbresults)
       })
       .catch(err => res.status(422).json(err))
   });
-
-
-
 
 
 router.route("/:id")
@@ -80,8 +84,8 @@ router.route("/signout/:id")
     // console.log(req.body.password)
     users.signout(req.params.id, data)
       .then(dbresults => {
-        console.log("return from signout")
-        console.log(dbresults)
+        // console.log("return from signout")
+        // console.log(dbresults)
         res.json(dbresults)
       })
       .catch(err => res.status(422).json(err))

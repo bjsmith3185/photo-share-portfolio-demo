@@ -89,8 +89,8 @@ class Admin extends Component {
 
     API.getUser(_id)
       .then(res => {
-        // console.log("users info")
-        // console.log(res.data)
+        console.log("users info")
+        console.log(res.data)
 
         if (res.data === null) {
           this.setState({
@@ -123,15 +123,19 @@ class Admin extends Component {
     let newUser = {
       name: this.state.username,
       email: this.state.useremail,
-      // favorites:[],
-      // password: this.state.passwordOne,
+     
     }
 
     API.addUser(newUser)
       .then((res) => {
-        // console.log("added new user to database")
-        // console.log(res.data)
+        console.log("added new user to database")
+        console.log(res.data)
+        this.setState({
+          name: "",
+          email: "",
+        })
         this.getAllUsers();
+        this.viewAllUsers();
       })
       .catch(error => {
         console.log(error)

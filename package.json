@@ -1,11 +1,11 @@
 {
-  "name": "mern",
+  "name": "photo-share-app",
   "version": "1.0.0",
   "engines": {
     "node": "10.13.0",
     "yarn": "1.12.1"
   },
-  "description": "",
+  "description": "app to allow users to upload and share pictures",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -31,6 +31,7 @@
     "if-env": "^1.0.4",
     "mongoose": "^5.0.17",
     "multer": "^1.4.1",
+    "nodemailer": "^5.1.1",
     "react-router-dom": "^4.3.1",
     "recompose": "^0.30.0",
     "rxjs": "^6.3.3"

@@ -5,21 +5,24 @@ The heroku deployed link is  https://morning-garden-46388.herokuapp.com/
 
 This app allows users to upload and share photos.
 
-The administrator can create new account for a user by entering a name and email.
-    - A user without admin rights can
-        * view all photos
-        * save photos to their favorites
-        * comment on any photo
-        * update their user data
-        * change their password
+2 types of accounts: User or Administrator
 
-    - A user with admin right can
-        * do all the above features plus
-        * add new users
-        * view current online users
-        * update any users data
-        * remove pictures
-        * delete a user
+User:
+    * view all photos
+    * save photos to their favorites
+    * comment on any photo
+    * update their user data
+    * change their password
+
+Administrator:
+    * do all the above features plus
+    * add new users
+        (enter a new users name and email, the app will send the new user an email with their username and password)
+    * view current online users
+    * update any users data
+    * remove pictures
+    * delete a user
+
 
 This app currently uses auth that was created from scratch using mongodb.
     - the default password is 123456 when a user is created
@@ -37,7 +40,6 @@ This app also used mongodb for storage
 
 future plans:
     - store all picture data on AWS S3
-    - use npm nodemailer to send new usere an email with the site url and password
     - I need to add some style and responsiveness to the UI!!!!!!
     - fix the rotate image button...
 

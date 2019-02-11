@@ -29,9 +29,9 @@ class NewUser extends Component {
 
     let email = sessionStorage.getItem("email")
     let name = sessionStorage.getItem("name");
-    // console.log("from session storage")
-    // console.log(email);
-    // console.log(name);
+    console.log("from session storage")
+    console.log(email);
+    console.log(name);
     this.setState({
       name: name,
       email: email,
