@@ -1,7 +1,7 @@
 # photo_share_mongo_auth
 Used previous version of photo_share but added an auth using mongobd instead of firebase_auth.
 
-The heroku deployed link is  https://morning-garden-46388.herokuapp.com/
+The heroku deployed link is  https://morning-garden-46388.herokuapp.com/, https://photo-share-demo.herokuapp.com/
 
 This app allows users to upload and share photos.
 
