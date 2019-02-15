@@ -1,13 +1,85 @@
 
 
-
-.removepicture-area {
-  padding-top: 50px;
-  padding-left: 50px;
+.removepicture-title {
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 50px;
 }
 
 
-.removepicture-button {
+
+
+
+.removepicture-menu-area {
+  margin-top: 50px;
+
+}
+
+.removepicture-menu-btn {
+  display: inline-block;
+  margin-right: 70px;
+  font-size: 26px;
+  font-weight: bold;
+  color: black;
+
+}
+
+.removepicture-menu-btn:hover {
+  color: red;
+
+}
+
+
+
+.removepicture-confirm {
+  font-size: 22px;
+  font-weight: bold;
+  color: black;
+}
+
+.removepicture-btn-deleteAll {
+  background: red;
+  color: black;
+  margin-left: 20px;
+  font-size: 18px;
+
+}
+
+.removepicture-btn-deleteAll:hover {
+  background: rgb(241, 123, 123);
+  color: rgb(53, 46, 46);
+ 
+  }
+
+.removepicture-btn-cancel {
+  background: blue;
+  color: white;
+  font-size: 22px;
+ 
+  margin-top: 20px;
+}
+
+.removepicture-btn-cancel:hover {
+  background: rgb(71, 71, 241);
+  color: rgb(230, 215, 215);
+  
+}
+
+
+
+.removepicture-area {
+ 
+}
+
+.removepicture-confirm {
+  font-size: 26px;
+  color: red;
+  font-weight: bolder;
+
+}
+
+
+/* .removepicture-button {
   color:blue;
   font-size: 20px;
   font-weight: bold;
@@ -17,7 +89,7 @@
 .removepicture-button:hover {
   color:red;
   
-}
+} */
 
 
 

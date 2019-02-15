@@ -1,0 +1,95 @@
+
+
+
+.modifyuser-area {
+    margin-top: 50px;
+
+}
+
+.modifyuser-title {
+    font-size: 40px;
+    color: black;
+    font-weight: bold;
+}
+
+.modifyuser-form {
+    margin-top: 10px;
+
+}
+
+.modifyuser-label {
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+}
+
+.modifyuser-select {
+    margin-left: 10px;
+}
+
+.modifyuser-btn {
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+/* DELETE USER BELOW  */
+
+.deleteuser-area {
+    margin-top: 50px;
+    font-size: 18px;
+    font-weight: bolder;
+    color: black;
+}
+
+.deleteuser-title {
+    font-size: 40px;
+    font-weight: bolder;
+
+}
+
+.deleteuser-form {
+    margin-top: 20px;
+}
+
+.deleteuser-label-title {
+    /* font-size: 18px;
+    font-weight: bold;
+    color: black; */
+   
+}
+
+.deleteuser-select {
+    margin-left: 15px;
+}
+
+
+.deleteuser-buttons {
+    margin-top: 20px;
+}
+
+.deleteuser-continue-btn {
+    margin-left: 10px;
+}
+
+.deleteuser-confirm-name {
+    color: red;
+    font-weight: bolder;
+    font-size: 22px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.deleteuser-confirm-btn {
+    margin-left: 20px;
+    background: red;
+    color: white;
+}
+
+.deleteuser-cancel-btn {
+    margin-top: 15px;
+    color: white;
+    background: blue;
+    
+}
+
+

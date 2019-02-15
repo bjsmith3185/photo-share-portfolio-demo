@@ -1,0 +1,101 @@
+
+.removepicture-top-area {
+  margin-bottom: 10px;
+}
+
+
+.removepicture-title-top {
+  font-size: 26px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.removepicture-subtitle {
+  font-size: 30px;
+  color: red;
+  font-weight: bolder;
+}
+
+
+
+.removepicture-image-area {
+  border-top: 1px solid black; 
+  padding-top: 10px;
+
+}
+
+.removepicture-btn-cancel-top {
+  font-size: 16px;
+  margin-left: 15px;
+  background: blue;
+  color: white;
+  
+}
+
+.removepicture-btn-cancel-top:hover {
+  
+  background: rgb(50, 50, 247);
+  color: white;
+  
+}
+
+
+
+.list-li-del {
+  /* margin-top: 15px; */
+  position: relative;
+  color: black;
+  font-weight: bolder;
+  font-size: 10px;
+  border: 2px solid black;
+  height: auto;
+  width: 108px;
+  /* margin-left: 15px;
+  margin-bottom: 55px; */
+  padding: 2px;
+margin: 15px;
+display: inline-block;
+
+}
+
+/* .picturelist-img-box {
+  position: relative;
+  width: 204px;
+  height: auto;
+   
+  border: 2px solid black;
+  margin: 15px;
+} */
+
+/* .picturelist-img {
+  height: 200px;
+  width: 200px;
+ 
+} */
+
+
+
+.picturelist-toolbar {
+  position: relative;
+  width: 100%;
+  padding-left: 2px;
+  padding-right: 2px;
+  height: auto;
+
+}
+
+.deletepic-btn {
+  color:red;
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+

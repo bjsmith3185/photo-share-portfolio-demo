@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import API from '../../utils/API';
 import "./SignIn.css";
 import * as ROUTES from '../../constants/routes';
+import Navigation from '../../components/Navigation'
 // import AllUsers from "../../components/AllUsers";
 
 
@@ -11,23 +12,29 @@ class SignIn extends Component {
 
   state = {
     adminTrue: false,
-
     name: "",
     email: "",
     password: "",
-
     unscessful: false,
-    
-
+   
   };
 
   componentDidMount() {
     sessionStorage.clear();
   }
 
-  // componentWillUnmount() {
+  demo = () => {
+    this.setState({
+      email: "",
+      password: "",
+      name: ""
 
-  // }
+    })
+    this.setState({
+      email: "brian@mail.com",
+      password: "123456"
+    })
+  }
 
   login = (event) => {
     console.log("logging in to app")
@@ -40,9 +47,6 @@ class SignIn extends Component {
 
     API.login(this.state.email, data)
       .then(res => {
-        // console.log("return from logins")
-        // console.log(res.data)
-
 
         this.setState({
           email: "",
@@ -79,21 +83,21 @@ class SignIn extends Component {
     return (
 
       <div>
+        <Navigation />
 
-        <h1>Sign In</h1>
+        <div className="signin-title-area text-center">
+        <span className="signin-title text-center">Sign In</span> <span className="signin-help-btn" onClick={this.demo}>Demo Login</span></div>
 
         {this.state.unscessful ? (
-          <div>Incorrect Login Attempt, Try Again</div>
+          <div className="login-incorrect text-center">Incorrect Login Attempt, Try Again</div>
         ) : (
 
-            <div>Enter you information Below</div>
+            <div className="login-text text-center">Enter you information Below</div>
           )}
-          <br/>
-          <div>To test this app use:</div>
-          <div>email: brian@mail.com</div>
-          <div>password: 123456</div>
-        <form>
-          <input className="form-input"
+
+
+        <form className="login-form text-center">
+          <input className="login-form-input"
             value={this.state.email}
             name="email"
             onChange={this.onChange}
@@ -101,7 +105,7 @@ class SignIn extends Component {
             placeholder="email"
           />
           <br />
-          <input className="form-input"
+          <input className="login-form-input2"
             value={this.state.password}
             name="password"
             onChange={this.onChange}
@@ -113,6 +117,7 @@ class SignIn extends Component {
 
         </form>
 
+      
       </div>
 
     )

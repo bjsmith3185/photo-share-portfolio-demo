@@ -1,20 +1,94 @@
 
 
-.background-area {
-  background:lightgray;
+
+.updateuser-area {
+  margin-top: 50px;
+
 }
 
-.form-input {
-  margin-left: 10px;
-}
-
-
-.form-title {
-  font-size: 30px;
+.updateuser-title {
+  font-size: 40px;
+  color: black;
   font-weight: bold;
+  border-bottom: 1px solid black;
+}
+
+.updateuser-input-area {
+  margin-top: 20px;
+}
+
+.updateuser-previous-text {
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+.updateuser-previous-text-inner {
+  margin-left: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
+}
+
+.updateuser-label {
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+.updateuser-input {
+  margin-left: 15px;
+}
+
+
+.updateuser-password {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.updateuser-admin-area {
+  margin-top: 20px;
+}
+
+.updateuser-admin-text {
+  font-size: 18px;
+  color: black;
+  font-weight: bold;
+}
+
+.updateuser-admin-inner {
+  font-size: 18px;
+  font-weight: bold;
+  color: blue;
 
 }
 
-.form-btn {
-  margin-top: 10px;
+.updateuser-admin-label {
+  font-size: 18px;
+  font-weight: bold;
+  margin-left: 20px;
 }
+
+.updateuser-dropdown {
+  margin-left: 5px;
+}
+
+
+.updateuser-submit-btn {
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+
+
+
+
+
+
+
+
+
+
+

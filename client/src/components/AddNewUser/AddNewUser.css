@@ -1,20 +1,61 @@
 
 
-.background-area {
-  background:lightgray;
+.addnewuser-area {
+  margin-top: 50px;
+  width: 100%;
 }
 
-.form-input {
-  margin-left: 10px;
+.addnewuser-title {
+  font-size: 25px;
+  font-weight: bold;
+  color: black;
+
 }
 
+.addnewuser-form {
+  margin-top: 15px;
 
-.form-title {
-  font-size: 30px;
+}
+
+.addnewuser-input {
+  margin-top: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5px;
+}
+
+.addnewuser-submit {
+  margin-top: 10px;
+  cursor: pointer;
+
+}
+
+.addnewuser-notes-area {
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+.addnewuser-notes {
+  font-size: 16px;
   font-weight: bold;
 
 }
 
-.form-btn {
-  margin-top: 10px;
+.addnewuser-notes-indent {
+  margin-left: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  color: blue;
 }
+
+
+
+
+
+
+
+
+

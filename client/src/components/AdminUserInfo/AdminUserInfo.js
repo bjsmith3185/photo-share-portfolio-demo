@@ -1,8 +1,8 @@
 import React from "react";
-import "./UserInfo.css";
+import "./AdminUserInfo.css";
 
 
-const UserInfo = (props) => (
+const AdminUserInfo = (props) => (
 
   <div className="userinfo-area">
     <div className="userinfo-title text-center">Your Account Information.</div>
@@ -150,5 +150,5 @@ const UserInfo = (props) => (
   </div>
 );
 
-export default UserInfo;
+export default AdminUserInfo;
 

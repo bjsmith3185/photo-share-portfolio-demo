@@ -66,8 +66,8 @@ class Account extends Component {
 
     API.getUser(_id)
       .then(res => {
-        console.log("users info")
-        console.log(res.data)
+        // console.log("users info")
+        // console.log(res.data)
 
         if (res.data === null) {
           this.setState({
@@ -98,7 +98,7 @@ class Account extends Component {
 
 
   viewUpdateName = () => {
-    console.log("clicked name")
+    // console.log("clicked name")
     if (this.state.showUpdateName === false) {
       this.setState({
         showUpdateName: true,
@@ -111,7 +111,7 @@ class Account extends Component {
   };
 
   updateName = () => {
-    console.log("updating name")
+    // console.log("updating name")
     let data = {
       name: this.state.newName,
     }
@@ -143,7 +143,7 @@ class Account extends Component {
   }
 
   updateEmail = () => {
-    console.log("clicked password")
+    // console.log("clicked password")
     let data = {
       email: this.state.newEmail,
     }
@@ -176,7 +176,7 @@ class Account extends Component {
   }
 
   updatePassword = () => {
-    console.log("clicked password")
+    // console.log("clicked password")
     let data = {
       password: this.state.newPassword,
     }
@@ -198,7 +198,7 @@ class Account extends Component {
 
   };
 
-  
+
   viewUserInfo = () => {
     if (this.state.showUserInfoArea === false) {
       this.setState({
@@ -238,9 +238,12 @@ class Account extends Component {
               signOut={this.signOut}
             />
             <UserIdBar name={this.state.name} />
-            <h1>User Account Page</h1>
+            <div className="account-title text-center">User Account Page</div>
 
-            <button onClick={this.viewUserInfo}>View User Info.</button>
+            <div className="account-text text-center">
+              Click to view your account information.
+                <button className="account-info-btn" onClick={this.viewUserInfo}>User Info.</button>
+            </div>
 
             {this.state.showUserInfoArea ? (
 
@@ -266,28 +269,26 @@ class Account extends Component {
                 newPassword={this.state.newPassword}
                 updatePassword={this.updatePassword}
 
-
-
               />
-
 
             ) : (
                 <div></div>
               )}
 
-
-
           </div>
 
-
-
-
         ) : (
-            <div>
-              You have been logged out, click the link below to sign in.
-              <Link to={ROUTES.SIGNIN}>Sign In</Link> </div>
+
+            <div className="account-logged-out-area text-center">
+              <div className="account-logged-out text-center">
+                You have been logged out, click the link below to sign in.</div>
+              <Link to={ROUTES.SIGNIN}>Sign In</Link>
+            </div>
+
           )}
+
       </div>
+
     )
   };
 };

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import * as ROUTES from '../../constants/routes';
 import API from '../../utils/API';
-// import "./Pictures.css";
+import "./Pictures.css";
 
 import Navigation from '../../components/Navigation';
 import PictureList from '../../components/PictureList';
@@ -35,6 +35,7 @@ class Pictures extends Component {
     showAllFavorites: false,
 
     files: "",
+    showUploadAlert: false,
 
     rotation: 0,
 
@@ -105,7 +106,7 @@ class Pictures extends Component {
     let email = sessionStorage.getItem("email")
     let name = sessionStorage.getItem("name");
     let _id = sessionStorage.getItem("_id");
-    console.log(`setting user info: ${name}, ${email}, ${_id}`)
+    // console.log(`setting user info: ${name}, ${email}, ${_id}`)
     this.setState({
       name: name,
       email: email,
@@ -289,66 +290,85 @@ class Pictures extends Component {
   viewAllPictures = () => {
     // console.log("clicked view all pics")
     this.createDisplayPicturesAll();
+    this.setState({
+          viewUpload: false,
+          showAllFavorites: false,
+          showAllPictures: true,
+          showUploadAlert: false
+        })
 
-    if (this.state.showAllPictures === false) {
-      this.setState({
-        viewUpload: false,
-        showAllFavorites: false,
-        showAllPictures: true,
-      })
-    } else {
-      this.setState({
-        viewUpload: false,
-        showAllFavorites: false,
-        showAllPictures: true,
-      })
-    }
+    // if (this.state.showAllPictures === false) {
+    //   this.setState({
+    //     viewUpload: false,
+    //     showAllFavorites: false,
+    //     showAllPictures: true,
+    //   })
+    // } else {
+    //   this.setState({
+    //     viewUpload: false,
+    //     showAllFavorites: false,
+    //     showAllPictures: true,
+    //   })
+    // }
   };
 
   viewMyFavorites = () => {
     // console.log("clicked my favs")
     this.createdisplayPicturesFav();
+    this.setState({
+      viewUpload: false,
+      showAllFavorites: true,
+      showAllPictures: false,
+      showUploadAlert: false
+    })
 
-    if (this.state.showAllFavorites === false) {
-      this.setState({
-        viewUpload: false,
-        showAllFavorites: true,
-        showAllPictures: false,
-      })
-    } else {
-      this.setState({
-        showAllFavorites: false,
-        viewUpload: false,
-        showAllPictures: true,
-      })
-    }
+    // if (this.state.showAllFavorites === false) {
+    //   this.setState({
+    //     viewUpload: false,
+    //     showAllFavorites: true,
+    //     showAllPictures: false,
+    //   })
+    // } else {
+    //   this.setState({
+    //     showAllFavorites: false,
+    //     viewUpload: false,
+    //     showAllPictures: true,
+    //   })
+    // }
   };
 
   viewUpload = () => {
-    if (this.state.viewUpload === false) {
-      this.setState({
-        viewUpload: true,
-        showAllFavorites: false,
-        showAllPictures: false,
-      })
-    } else {
-      this.setState({
-        viewUpload: false,
-        showAllFavorites: false,
-        showAllPictures: true,
-      })
-    }
+    this.setState({
+      viewUpload: true,
+      showAllFavorites: false,
+      showAllPictures: false,
+      showUploadAlert: false
+    })
+    // if (this.state.viewUpload === false) {
+    //   this.setState({
+    //     viewUpload: true,
+    //     showAllFavorites: false,
+    //     showAllPictures: false,
+    //   })
+    // } else {
+    //   this.setState({
+    //     viewUpload: false,
+    //     showAllFavorites: false,
+    //     showAllPictures: true,
+    //   })
+    // }
   };
 
 
   viewSlideshow = () => {
-
+    
     if (this.state.isOpen === true) {
       this.setState({
         isOpen: false,
         showAllPictures: true,
         viewUpload: false,
         showAllFavorites: false,
+        showUploadAlert: false
       })
     } else {
       this.setState({
@@ -356,6 +376,7 @@ class Pictures extends Component {
         showAllPictures: false,
         viewUpload: false,
         showAllFavorites: false,
+        showUploadAlert: false
       })
     }
 
@@ -457,7 +478,8 @@ class Pictures extends Component {
     // console.log(event.target.files);
 
     this.setState({
-      files: event.target.files
+      files: event.target.files,
+      showUploadAlert: true,
     })
   }
 
@@ -467,11 +489,9 @@ class Pictures extends Component {
     API.uploadFiles(this.state.files[0])
       .then(res => {
         this.setState({
-          viewUpload: false,
-          showAllFavorites: false,
-          showAllPictures: true,
+         showUploadAlert: false
         })
-        this.createDisplayPicturesAll();
+        this.viewAllPictures();
 
       })
       .catch(err => console.log(err));
@@ -552,14 +572,16 @@ class Pictures extends Component {
         {this.state.loggedIn ? (
           <div>
             <Navigation
-          authUser={this.state.authUser}
-          admin={this.state.admin}
-          signOut={this.signOut}
-        />
+              authUser={this.state.authUser}
+              admin={this.state.admin}
+              signOut={this.signOut}
+            />
 
             <UserIdBar name={this.state.name} />
-
-            <br />
+          <div className="picture-page-header text-center">
+          Picture Page
+          </div>
+            {/* <br /> */}
             <PictureNavbar
               allPictures={this.viewAllPictures}
               myFavorites={this.viewMyFavorites}
@@ -567,19 +589,21 @@ class Pictures extends Component {
 
             />
 
-
             {
               this.state.viewUpload ? (
                 <PictureUpload
                   onSelect={this.onSelect}
                   uploadFiles={this.uploadFiles}
+                  files={this.state.files}
+                  showUploadAlert={this.state.showUploadAlert}
                 />
+
               ) : (<div></div>)
             }
 
             {
               this.state.showAllPictures ? (
-                <div>
+                <div className="showAllPictures-area">
                   <ViewSlideshowNav
                     viewSlideshow={this.viewSlideshow}
                   />
@@ -601,6 +625,7 @@ class Pictures extends Component {
 
                   />
                 </div>
+
               ) : (<div></div>)
             }
 
@@ -627,6 +652,7 @@ class Pictures extends Component {
                     viewSlideshow={this.viewSlideshow}
                   />
                 </div>
+
               ) : (<div></div>)
             }
 
@@ -646,21 +672,14 @@ class Pictures extends Component {
               ) : (<div></div>)
             }
 
-
-
           </div>
 
-
-
         ) : (
-            <div className="home-signin-link">
-              <div> <Link to={ROUTES.SIGNIN}>Sign In</Link> </div >
+            <div className="picture-signin-link-area text-center">
+              <div className="picture-signin-link"> <Link to={ROUTES.SIGNIN}>Sign In</Link> </div >
             </div >
           )
         }
-
-
-
 
       </div >
 

@@ -41,15 +41,13 @@ router.route("/")
     pictures.create(picObj)
       .then(dbresults => {
         //add image value to model with _id
-
+        
         let data = {
 
-          //image: "http://localhost:3001/api/pictures/" + dbresults._id
-          // image: "https://powerful-eyrie-82524.herokuapp.com/api/pictures/" + dbresults._id
+          // image: "http://localhost:3001/api/pictures/" + dbresults._id
+          
+
           image: "https://photo-share-demo.herokuapp.com/api/pictures/" + dbresults._id
-
-
-
           //  image: dbresults.encodedImage.data.toString()
           // image: dbresults._id
         }
@@ -96,7 +94,7 @@ router.route("/note/:picture")
       })
       .catch(err => res.status(422).json(err))
   });
-
+  
 
 
 router.route("/:id")
@@ -112,12 +110,13 @@ router.route("/:id")
 
 router.route("/:id")
   .delete((req, res) => {
+    console.log("removing picture: " + req.params.id)
     pictures.remove(req.params.id)
       .then(dbresults => res.json(dbresults))
       .catch(err => res.status(422).json(err))
   });
 
-router.route("/")
+  router.route("/")
   .delete((req, res) => {
     pictures.removeAll()
       .then(dbresults => res.json(dbresults))

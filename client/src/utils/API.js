@@ -114,6 +114,10 @@ export default {
     return axios.delete('/api/pictures')
   },
 
+  removeOnePicture: function (id) {
+    return axios.delete('/api/pictures/' + id)
+  },
+
 
 
   // route /api/comments

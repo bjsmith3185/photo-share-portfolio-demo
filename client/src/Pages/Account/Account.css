@@ -1,0 +1,51 @@
+
+.account-logged-out-area {
+    margin-top: 50px;
+}
+
+.account-logged-out {
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 15px;
+}
+
+
+.account-title {
+    margin-top: 30px;
+    font-size: 30px;
+    font-weight: bolder;
+    color: black;
+}
+
+.account-text {
+    margin-top: 25px;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+.account-info-btn {
+    font-size: 18px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

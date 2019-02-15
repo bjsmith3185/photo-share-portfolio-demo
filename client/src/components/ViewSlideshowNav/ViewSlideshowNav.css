@@ -1,15 +1,16 @@
 
 
-.pictureviewnav-container {
-
-  padding: 5px;
+.viewslideshownav-area {
+  padding: 3px;
+  width: 100%;
   background: black;
 
 }
 
 
-.pictureviewnav {
-  margin: 5px 10px;
+.viewslideshownav-btn {
+  margin-left: 15px;
+  vertical-align: middle;
   font-size: 16px;
   font-weight: bolder;
   color: red;

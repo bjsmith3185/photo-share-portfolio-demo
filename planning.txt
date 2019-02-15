@@ -6,8 +6,43 @@ collections: users, pictures, comments, displayPictures(for each user)
 
 TODO
 
-- add email option when new user is created.
+*** if a picture is deleted from the app
+    --- a function needs to check each users favorties [] and remove that _id reference to avoid errors when the user tries to view favorites.
+    - may be able to do this by comparing _id's and if the users fav does not match a pic in the picture collection that entry is skipped.
 
+*** maybe use images for some of the links
+        - for remove pictures, a single image or three images..
+
+*** add a setTimeout to the delete user tab under admin.
+
+*** add a forgot password function.
+    - need to think thru these steps....
+
+
+- styling for:
+
+    
+    * Pictures page
+        - create a fixed size for the pic box
+
+    * My Profile page
+        - center the page title
+        - details on what the page is used for
+
+    * Admin page
+        - look into how to make the title a different color
+        - each tab needs some styling
+
+    
+
+
+
+- modify the nav bar to include
+    * top nav
+    * signed in as...
+    * div to show the screen the user is currently on
+
+    
 - add better text to the home page
 - add a confirm or something when deleting users or pictures
 

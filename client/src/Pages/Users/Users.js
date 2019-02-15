@@ -1,68 +1,68 @@
-import React, { Component } from 'react';
+// import React, { Component } from 'react';
 
-import API from '../../utils/API';
-// import "./Match.css";
-import Form from "../../components/Form";
+// import API from '../../utils/API';
+// // import "./Match.css";
+// import Form from "../../components/Form";
 
 
 
-class Users extends Component {
+// class Users extends Component {
 
-  state = {
-   users: [],
-   name: "",
-   newUser: "",
-  };
+//   state = {
+//    users: [],
+//    name: "",
+//    newUser: "",
+//   };
 
-  // componentDidMount() {
+//   // componentDidMount() {
   
-  // };
+//   // };
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
+//   handleInputChange = event => {
+//     const { name, value } = event.target;
+//     this.setState({
+//       [name]: value
+//     });
+//   };
 
-  addUser = () => {
+//   addUser = () => {
 
-    let data = {
-      name: this.state.newUser
-    }
+//     let data = {
+//       name: this.state.newUser
+//     }
     
-    API.addUser(data)
-    .then(res => {
-      console.log("new user added");
-      console.log(res.data);
+//     API.addUser(data)
+//     .then(res => {
+//       console.log("new user added");
+//       console.log(res.data);
       
-       })
-    .catch(err => console.log(err));
-  }
+//        })
+//     .catch(err => console.log(err));
+//   }
     
     
 
-  render = () => {
-    return (
+//   render = () => {
+//     return (
 
-          <div>
+//           <div>
 
-           <h1>This is the picture page</h1>
+//            <h1>This is the picture page</h1>
 
-            <div className="pictures-form-area">
+//             <div className="pictures-form-area">
             
-              <Form
-                userName={this.state.userName}
-                handleInputChange={this.handleInputChange}
-                addUser={this.addUser}
-              />
-            </div>
-          </div>
+//               <Form
+//                 userName={this.state.userName}
+//                 handleInputChange={this.handleInputChange}
+//                 addUser={this.addUser}
+//               />
+//             </div>
+//           </div>
 
-    );
-  };
-};
+//     );
+//   };
+// };
 
 
 
-export default Users;
+// export default Users;

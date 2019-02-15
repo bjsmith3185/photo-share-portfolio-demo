@@ -1,7 +1,9 @@
 
 
 .adminnavbar-container {
-  margin: 2px auto;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:20px;
   padding: 5px;
   background: black;
   width: 100%;

@@ -1,42 +1,26 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import * as ROUTES from '../../constants/routes';
 import Navigation from '../../components/Navigation'
 import "./Landing.css";
 
 
 class LandingPage extends Component {
 
-  // state = {
-  //   name: "",
-  //   email: "",
-
-  //   users: [],
-
-
-
-  // };
-
-  // componentDidMount() {
-
-  // }
-
-
-
-
-
   render = () => {
     return (
 
       <div>
         <Navigation />
-        <h1>Welcome to Photo Share</h1>
+        <div className="landing-title text-center">Welcome to Photo Share</div>
 
-        <div className="row">
-          <div className="col-lg-6 text-center">
-            <p>Here you can view and share photos with family and friends.</p>
-            <p>Sign In to get started!</p>
+      
+          <div className="landing-text text-center">
+            <p>The fun and easy way to view and share photos with family and friends.</p>
+           
           </div>
-
-        </div>
+          <div className="landing-signin text-center"><Link to={ROUTES.SIGNIN}>Sign In to get started!</Link></div>
+          
 
 
       </div>

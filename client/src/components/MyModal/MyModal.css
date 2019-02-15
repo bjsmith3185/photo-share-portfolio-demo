@@ -1,0 +1,85 @@
+
+
+.modal-onclick-btn {
+  color: red;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+
+.myModal {
+  width: 400px;
+  height: 150px;
+  background: lightgray;
+ 
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 2px solid black;
+  border-radius: 6px;
+
+}
+
+
+.modal-close-btn {
+  margin-top: 5px;
+  float: right;
+  margin-right: 10px;
+  font-size: 14px;
+  font-weight: bolder;
+  color: blue;
+}
+
+.modal-close-btn:hover {
+  
+  color: rgb(68, 68, 248);
+}
+
+.modal-text1 {
+  clear: right;
+  margin-top: 25px;
+ 
+  font-size: 16px;
+  font-weight: bold;
+  color: red;
+
+}
+
+.modal-text2 {
+  margin-top: 5px;
+ 
+  font-size: 16px;
+  font-weight: bold;
+  color: red;
+
+}
+
+.modal-button-area {
+  margin-top: 20px;
+ 
+}
+
+.modal-delete-btn {
+  font-weight: bold;
+  color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
