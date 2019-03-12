@@ -1,25 +1,9 @@
 
-/* 
-.useridbar-container {
-  background: black;
-  width: 100%;
-  position: relative;
-}
-
-
-.useridbar-name {
-  float: right;
-  font-size: 13px;
-  font-weight: bolder;
-  color: red;
-  background: black
-} */
-
 
 .useridbar-name {
   text-align: right;
   padding-right: 5px;
-  font-size: 13px;
+  font-size: 10px;
   font-weight: bolder;
   color: red;
   background: black;
@@ -30,9 +14,22 @@
 .useridbar-id {
  
   padding-left: 8px;
-  font-size: 13px;
+  font-size: 10px;
   font-weight: bolder;
   color: white;
   background: black;
   width: 100%;
+}
+
+
+/*---Media Queries --*/
+
+@media (min-width: 576px) {
+  .useridbar-name {
+    font-size: 13px;
+  }
+  
+  .useridbar-id {
+    font-size: 13px;
+  }
 }

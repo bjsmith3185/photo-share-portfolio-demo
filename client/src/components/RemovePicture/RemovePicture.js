@@ -38,10 +38,12 @@ const RemovePicture = (props) => (
     
         <DeletePictureList
           pictures={props.pictures}
-          // confirmSelected={props.confirmSelected}
+          confirmSelected={props.confirmSelected}
           selectPicDelete={props.selectPicDelete}
           // confirmSelectedPicDelete={props.confirmSelectedPicDelete}
           cancelDeletePic={props.cancelDeletePic}
+          preDeleteSelectedPic={props.preDeleteSelectedPic}
+          tempImageUrl={props.tempImageUrl}
 
         />
 

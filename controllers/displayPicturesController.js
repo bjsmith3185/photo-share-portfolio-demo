@@ -18,7 +18,7 @@ module.exports = {
   //===================================
 
   findByUser: function (id) {
-    console.log("!!!!! " + id)
+    // console.log("!!!!! " + id)
     return db.DisplayPictures
       .find({ userId : id })
       .populate({
@@ -40,8 +40,8 @@ module.exports = {
   },
 
   createMany: function (data) {
-    console.log("!!!!! create many")
-    console.log(data)
+    // console.log("!!!!! create many")
+    // console.log(data)
     return db.DisplayPictures
     .insertMany(data, {new: true})
   },

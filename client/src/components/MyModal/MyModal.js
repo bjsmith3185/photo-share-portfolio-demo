@@ -11,6 +11,7 @@ class MyModal extends React.Component {
       showModal: false,
       _id: props._id,
       selectPicDelete: props.selectPicDelete,
+      awsKey: props.awsKey,
     };
     
     this.handleOpenModal = this.handleOpenModal.bind(this);
@@ -21,7 +22,7 @@ class MyModal extends React.Component {
 
   delete = () => {
     // console.log("inside delete()")
-    this.state.selectPicDelete(this.state._id)
+    this.state.selectPicDelete(this.state._id, this.state.awsKey)
     this.handleCloseModal();
   };
   

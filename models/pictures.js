@@ -3,9 +3,12 @@ const Schema = mongoose.Schema;
 
 const PicturesSchema = new Schema({
   name: { type: String },
-  image: { type: String },
+  // image: { type: String },
   location: { type: String },
-  encodedImage: { data: Buffer, contentType: String },
+  info: { type: String },
+  // encodedImage: { data: Buffer, contentType: String },
+  imageUrl: { type: String },
+  awsKey: { type: String },
 
   notes: [
     {
@@ -19,10 +22,7 @@ const PicturesSchema = new Schema({
     default: Date.now
   },
 
-  // openTextBox: {
-  //   type: Boolean,
-  //   default: false
-  // },
+  
 
 });
 

@@ -1,18 +1,9 @@
 const router = require("express").Router();
 const pictures = require("../../controllers/picturesController");
+const removePic = require("../../middleware/deletingPictures/removePicture")
+const addPic = require('../../middleware/addingPicture/addingNewPicture');
+const removeAllPics = require('../../middleware/deletingPictures/removeAllPictures');
 
-
-const imageFilter = function (req, file, cb) {
-  // accept image only
-  if (!file.originalname.match(/\.(jpg|jpeg|png|gif)$/)) {
-    return cb(new Error('Only image files are allowed!'), false);
-  }
-  cb(null, true);
-};
-
-const multer = require('multer');
-const storage = multer.memoryStorage();
-const upload = multer({ storage: storage, fileFilter: imageFilter });
 
 // route  /api/pictures
 
@@ -20,116 +11,36 @@ router.route("/")
   .get((req, res) => {
     pictures.findAll()
       .then(dbresults => {
-        // console.log()
         res.json(dbresults)
       })
       .catch(err => res.status(422).json(err))
   });
 
-router.route("/")
-  .post(upload.single('image'), (req, res) => {
-
-    let picObj = {
-      name: req.file.originalname,
-      encodedImage:
-      {
-        data: req.file.buffer,
-        contentType: req.file.mimetype,
-      }
-    };
-
-    pictures.create(picObj)
-      .then(dbresults => {
-        //add image value to model with _id
-        
-        let data = {
-
-          // image: "http://localhost:3001/api/pictures/" + dbresults._id
-          
-
-          image: "https://photo-share-demo.herokuapp.com/api/pictures/" + dbresults._id
-          //  image: dbresults.encodedImage.data.toString()
-          // image: dbresults._id
-        }
-
-        pictures.update(dbresults._id, data)
-          .then(dbresults => {
-            res.json(dbresults)
-          })
-          .catch(err => res.status(422).json(err))
-
-        // res.json(dbresults)
-      })
-      .catch(err => res.status(422).json(err))
-
-  });
-
-
-
-router.route("/:picture")
-  .get((req, res) => {
-    pictures.findByPicture(req.params.picture)
-      .then(dbresults => {
-        if (dbresults.encodedImage.contentType) {
-          res.contentType(dbresults.encodedImage.contentType);
-          return res.send(dbresults.encodedImage.data);
-        } else {
-          return res.json(dbresults);
-        }
-      })
-      .catch(err => res.status(422).json(err))
-  });
-
-// route to add note
-router.route("/note/:picture")
+router.route("/deleteone/:id")
   .put((req, res) => {
-    console.log("inside the add note route")
-    console.log(req.params.picture)
-    console.log(req.body)
-    pictures.addNote(req.params.picture, req.body)
+    removePic.deletePic(req.params.id, req.body)
       .then(dbresults => {
-        console.log("this is the return with populated note")
-        console.log(dbresults)
-        res.json(dbresults)
-      })
-      .catch(err => res.status(422).json(err))
-  });
-  
-
-
-router.route("/:id")
-  .put((req, res) => {
-    pictures.update(req.params.id, req.body)
-      .then(dbresults => {
-        console.log("this is the return for update picture")
-        console.log(dbresults)
         res.json(dbresults)
       })
       .catch(err => res.status(422).json(err))
   });
 
-router.route("/:id")
+router.route("/deleteall/:id")
   .delete((req, res) => {
-    console.log("removing picture: " + req.params.id)
-    pictures.remove(req.params.id)
+    removeAllPics.deleteAll(req.params.id)
       .then(dbresults => res.json(dbresults))
       .catch(err => res.status(422).json(err))
   });
 
-  router.route("/")
-  .delete((req, res) => {
-    pictures.removeAll()
-      .then(dbresults => res.json(dbresults))
+  router.route("/:id")
+  .post((req, res) => {
+    addPic.newPic(req.params.id, req.body)
+      .then(dbresults => {
+        res.send(dbresults)
+      })
       .catch(err => res.status(422).json(err))
   });
-
-
-
 
 
 module.exports = router;
-
-
-
-
 

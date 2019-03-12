@@ -1,7 +1,12 @@
-# photo_share_mongo_auth
-Used previous version of photo_share but added an auth using mongobd instead of firebase_auth.
+# PS-deployed-aws-practice
 
-The heroku deployed link is  photo-share-demo.herokuapp.com  , https://photo-share-demo.herokuapp.com/
+This app is in github repo: photo-share-aws
+This app is deployed to:  https://photoshare-aws-practice.herokuapp.com/ 
+
+The heroku deployed link is https://photoshare-aws-practice.herokuapp.com/   ,
+
+Technologies used:
+    HTML, CSS, React.js, JavaScript, Node.js, Express.js, MongoDB, AWS-s3, redis, nodemailer, GitHub, Heroku.
 
 This app allows users to upload and share photos.
 
@@ -29,18 +34,31 @@ This app currently uses auth that was created from scratch using mongodb.
     - each user is encouraged to change this password asap
     - the password and email are checked against those stored in the database 
         - if incorrectly entered the user will be prompted to try again
+    - if the user forgets their password they will be given a security question to answer
+        - if the question is answered incorrectly more than 2 times, an email is sent with the password
+        - if the user correctly answers the security question they are signed into the app
 
-This app also used mongodb for storage
-    - a collection stores picture data
-    - a collection stores user data
-    - a colleciton stores comments for photos
-    - a collection stores a 'template' used to display each picture
-        ( this template allows individual users to see which pictures are their own favorites)
+
+Only a user classified as Admin can add new users
+    - the admin enters a new users 1) full name  2) email
+    - the app will email the new user their login information and a link to the site
+
+
+This app uses mongodb, redis and AWS-s3 for storage
+    - picture data is stored in a s3 bucket on AWS
+        - that picture's key is then stored in a picture collection in MongoDB
+    - cache is stored using redis
+
+    - the following collections are stored using MongoDB, MLab
+        - a collection stores picture data (key to AWS-s3, name, notes, date)
+        - a collection stores user data (name, id, email, favorites, date)
+        - a colleciton stores comments for photos (comments, user_id, date)
+        - a collection stores a 'template' used to display each picture
+            ( this template allows each picture box to display a red heart if that specific user has saved it as a favorite)  
 
 
 future plans:
-    - store all picture data on AWS S3
-    - I need to add some style and responsiveness to the UI!!!!!!
+ 
     - fix the rotate image button...
 
 BJS

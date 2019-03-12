@@ -3,32 +3,14 @@ const db = require("../models");
 module.exports = {
 
   login: function (email, password, data) {
-    // console.log("inside usersController")
-    // console.log(email)
-    // console.log(password)
-    // console.log(email)
-
     return db.Users
       .findOneAndUpdate({ email: email, password: password }, data, { new: true })
   },
 
   signout: function (id, data) {
-    // console.log("inside usersController")
-    // console.log(email)
-    // console.log(password)
-    // console.log(email)
-
     return db.Users
       .findOneAndUpdate({ _id: id }, data, { new: true })
   },
-
-  // createMany: function (data) {
-  //   console.log("!!!!! inserting many users")
-  //   console.log(data)
-  //   return db.Users
-  //   .insertMany(data, {new: true})
-  // },
-
 
   findAll: function () {
     return db.Users
@@ -45,29 +27,28 @@ module.exports = {
   },
 
   findByName: function (name) {
-    // console.log("########### usercontroller")
-    // console.log(name)
     return db.Users
       .findOne({ name: name })
   },
 
-  create: function (data) {
-    console.log("!!!")
-    console.log(data)
-    // db.Users.createIndex( { favorites: 1 } )
+  findByEmail: function (email) {
     return db.Users
-      .create(data)
+      .findOne({ email: email })
   },
 
+  create: function (data) {
+       return db.Users
+      .create(data)
+  },
 
   update: function (name, data) {
     return db.Users
       .findOneAndUpdate({ name: name }, data, { upsert: true })
   },
-  updateByEmail: function (email, data) {
-    return db.Users
-      .findOneAndUpdate({ email: email }, data, { upsert: true })
-  },
+  // updateByEmail: function (email, data) {
+  //   return db.Users
+  //     .findOneAndUpdate({ email: email }, data, { upsert: true })
+  // },
   updateById: function (id, data) {
     return db.Users
       .findOneAndUpdate({ _id: id }, data, { upsert: true })
@@ -86,22 +67,10 @@ module.exports = {
     return db.Users
       .deleteMany({})
   },
-
-  findByNameAndPopulate: function (name) {
-    // console.log("@@@@ " + name)
+  findUserFavorites: function (id) {
     return db.Users
-      .findOne({ name: name })
-    // .populate({
-    //   path: 'favorites',
-    //   populate: {
-    //     path: 'notes',
-    //     populate: {
-    //       path: 'author'
-    //     }
-    //   }
-    // })
-
-
-  },
+    .findOne({ _id: id })
+    .select('favorites')
+  }
 };
 

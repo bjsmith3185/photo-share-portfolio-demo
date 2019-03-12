@@ -1,0 +1,59 @@
+
+
+Problems,
+
+error when no pics were there and the first was uploaded
+xhr.js:178 GET http://localhost:3000/api/system/displaypictures/all/5c76986f3912e74004a777dd 500 (Internal Server Error)
+
+
+
+
+issue  
+- clear all cache when user logs in.  done
+- clear all cache when user logs out.  done
+- clear users cache when user is updated. done
+- clear all pic and fav when handleAddRemoveFav.js is called. done
+- clear all pic and fav when adding note. done 
+- clear all pic and fav when ADMIN remove picture.  done
+
+- clear all cache on timer?
+
+    
+SETUP
+
+- clearAllCache()
+    - pass in user_id: clears user's cache, allPics, allFavs
+
+- clearPicCache()
+    - pass in user_id: clears allPics, allFavs
+
+
+
+
+
+Redis
+
+
+when shold i use redis?
+
+* check if user exists() on each page load
+
+* get all pictures
+    - the first time after login
+    - on any change: fav, unfav, add note, upload pic
+
+* get favorites
+
+
+============
+
+redis stores
+
+user signin: redis key = user_id
+
+view all pictures: redis key = user_id + /allPics
+
+view fav pictures: redis key = user_id + /favPics 
+
+
+

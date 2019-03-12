@@ -1,13 +1,9 @@
 const router = require("express").Router();
-const populateUsersRoutes = require("./populateUsersRouter");
-const populatePicturesRoutes = require("./populatePicturesRouter");
+const resetRoutes = require("./resetRouter");
 
 
 //  routes /populate/user
-router.use("/users", populateUsersRoutes);
-router.use("/pictures", populatePicturesRoutes);
-
-
+router.use("/reset", resetRoutes);
 
 
 

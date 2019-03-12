@@ -7,6 +7,9 @@ const UsersSchema = new Schema({
   password: {type: String, default: "123456"},
   loggedIn: {type: Boolean, default: false},
   admin: {type: Boolean, default: false},
+  secretQuestion : {type: String, default: ""},
+  secretAnswer: {type: String, default: ""},
+  secretQuestionCompleted: {type: Boolean, default: false},
  
   favorites: [
     {

@@ -8,11 +8,37 @@
   border-bottom: 1px solid gray;
 }
 
+.picturenavbar-link {
+  margin: 0 10px;
+  font-size: 11px;
+  font-weight: bolder;
+  color: red;
+  cursor: pointer;
+}
 
-.picturenavbar {
+/*---Media Queries --*/
+@media (min-width: 992px) {
+
+}
+@media (max-width: 768px) {
+
+}
+@media (min-width: 476px) {
+.picturenavbar-link {
+  margin: 5px 25px;
+  font-size: 16px;
+}
+}
+
+
+
+
+
+
+/* .picturenavbar-link {
   margin: 5px 50px;
   font-size: 16px;
   font-weight: bolder;
   color: red;
   cursor: pointer;
-}
+} */

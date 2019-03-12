@@ -66,8 +66,6 @@ class Account extends Component {
 
     API.getUser(_id)
       .then(res => {
-        // console.log("users info")
-        // console.log(res.data)
 
         if (res.data === null) {
           this.setState({
@@ -98,7 +96,6 @@ class Account extends Component {
 
 
   viewUpdateName = () => {
-    // console.log("clicked name")
     if (this.state.showUpdateName === false) {
       this.setState({
         showUpdateName: true,
@@ -111,7 +108,6 @@ class Account extends Component {
   };
 
   updateName = () => {
-    // console.log("updating name")
     let data = {
       name: this.state.newName,
     }
@@ -143,7 +139,6 @@ class Account extends Component {
   }
 
   updateEmail = () => {
-    // console.log("clicked password")
     let data = {
       email: this.state.newEmail,
     }
@@ -176,7 +171,6 @@ class Account extends Component {
   }
 
   updatePassword = () => {
-    // console.log("clicked password")
     let data = {
       password: this.state.newPassword,
     }
@@ -193,9 +187,6 @@ class Account extends Component {
       showUpdatePassword: false,
     })
 
-
-
-
   };
 
 
@@ -209,14 +200,8 @@ class Account extends Component {
         showUserInfoArea: false,
       })
     }
-  }
+  };
 
-
-
-
-  // pageRedirect = () => {
-  //   this.props.history.push(ROUTES.HOME);
-  // };
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -238,11 +223,13 @@ class Account extends Component {
               signOut={this.signOut}
             />
             <UserIdBar name={this.state.name} />
+
             <div className="account-title text-center">User Account Page</div>
+            <hr className="account-line"/>
 
             <div className="account-text text-center">
-              Click to view your account information.
-                <button className="account-info-btn" onClick={this.viewUserInfo}>User Info.</button>
+             
+                <button className="account-info-btn" onClick={this.viewUserInfo}>View My Account</button>
             </div>
 
             {this.state.showUserInfoArea ? (

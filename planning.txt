@@ -1,10 +1,37 @@
 
-Heroku deployment for demo: powerful-eyrie-82524
+Heroku deployment for demo: photoshare-aws-practice
 
 database: pictureshare
 collections: users, pictures, comments, displayPictures(for each user)
 
+AWS s3 bucket: portfolio-photo-share
+
+
+When Changing AWS s3
+- update .env with correct keys and bucket
+- update awsRouter.js to the correct imageURL/
+- update config in heroku if deploying
+
+
+
 TODO
+
+!! client Admin.js line 409. need to move the reset password logic to server
+
+!! why does it sign out teh user when a new user is added?
+
+
+
+
+*** Change password     
+    - instead of showing the users password when they reset it
+        - have them enter current password
+        - enter new password twice
+
+
+*** Image box
+    - work on image box size so it doesnt change when notes are added
+    - update or remove rotate button.
 
 *** if a picture is deleted from the app
     --- a function needs to check each users favorties [] and remove that _id reference to avoid errors when the user tries to view favorites.
@@ -13,38 +40,7 @@ TODO
 *** maybe use images for some of the links
         - for remove pictures, a single image or three images..
 
-*** add a setTimeout to the delete user tab under admin.
 
-*** add a forgot password function.
-    - need to think thru these steps....
-
-
-- styling for:
-
-    
-    * Pictures page
-        - create a fixed size for the pic box
-
-    * My Profile page
-        - center the page title
-        - details on what the page is used for
-
-    * Admin page
-        - look into how to make the title a different color
-        - each tab needs some styling
-
-    
-
-
-
-- modify the nav bar to include
-    * top nav
-    * signed in as...
-    * div to show the screen the user is currently on
-
-    
-- add better text to the home page
-- add a confirm or something when deleting users or pictures
 
 
 

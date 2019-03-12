@@ -1,0 +1,91 @@
+
+
+Client apis
+
+// route  api/users
+- getUser()
+- updateUserById()
+- signOutUser()
+- login()
+- addUser()
+- getAllUsers()
+- updateUser()
+- deleteUser()
+- addToFavorites()
+- updateUserByEmail()  = is this necessary?
+
+
+
+
+// route  api/pictures
+- removeOnePicture()
+- getAllPictures()
+- removeAllPictures()
+- addPicture()
+
+// route  api/system
+- getdisplayPicturesAll()
+- getSecretQuestions()
+- emailSinglePassword()
+
+
+
+// route api/aws....
+
+- uploadToAWS()
+
+
+// route api/display
+- updateDisplayPicture()
+
+
+// route api/
+- addPictureNote()
+
+
+
+
+
+
+Questions
+* Admin.js
+    - do i need both functions()
+        - getOnlineUsers
+        - getAllUsers
+
+* Admin.js  
+    - submitUpdatedUser()
+        - see if this logic can be done server side 
+
+* SignIn.js 
+    - login()
+        - can i simplify this?
+
+* SignIn.js     
+    - submitQuestionandAnswer()
+        - API.updateUser()  can this be done using Id vs name?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

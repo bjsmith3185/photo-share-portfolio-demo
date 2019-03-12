@@ -16,15 +16,13 @@ const PictureList = (props) => (
 
     {props.pictures.map(image => (
       <div className="list-li" key={image._id}>
-
-        {/* <img alt={image._id} className="picurelist-img text-center" style={{ transform: `rotate(${props.rotation}deg)` }} src={image.picture.image} width="200" height="200" /> */}
-
-        <img alt={image._id} className="picurelist-img text-center" style={{ transform: `rotate(${props.rotation}deg)` }} src={image.picture.image} width="200" height="200" />
+     
+        <img alt={image._id} className="picurelist-img text-center" style={{ transform: `rotate(${props.rotation}deg)` }} src={image.picture.imageUrl} width="200" height="200" />
 
         <div className="picturelist-toolbar">
           <div className="picturelist-rotate text-center" onClick={() => props.rotate(image.picture._id)}>&#8631;</div>
 
-          <div className="picturelist-fav text-center" onClick={() => props.addToFavorites(image._id, image.showRed, image.picture._id)}>
+          <div className="picturelist-fav text-center" onClick={() => props.addToFavorites(image.picture._id)}>
 
             {image.showRed ? (
               <div className="heart"></div>
@@ -63,31 +61,7 @@ const PictureList = (props) => (
               <div className="picturelist-noteinput-button text-center" onClick={() => props.seeNoteInput(image._id, image.openTextBox)}>Add Note</div>
 
             )}
-        </div>
-
-
-        {/* this is the original textbox code  */}
-
-        {/* <div className="picturelist-note">
-
-          {props.showNoteInput ? (
-            <NoteInput
-              note={props.note}
-              onChange={props.onChange}
-              addNote={props.addNote}
-              picture_id={image._id}
-              seeNoteInput={props.seeNoteInput}
-
-            />
-          ) : (
-              <div className="picturelist-noteinput-button text-center" onClick={props.seeNoteInput}>Add Note</div>
-
-            )}
-        </div> */}
-
-
-        {/* </div> */}
-      </div>
+        </div></div>
     ))}
   </div>
 

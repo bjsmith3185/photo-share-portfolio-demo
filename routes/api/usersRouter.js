@@ -1,11 +1,14 @@
 const router = require("express").Router();
 const users = require("../../controllers/usersController");
-const usersHelper = require("../../routesHelper/userLogic");
-const email = require("../../nodeMailer/mailer");
+const newUser = require("../../middleware/newUser/createNewUser")
+const addRemoveFav = require("../../middleware/addRemoveFavorites/handleAddRemoveFav");
+const cacheModule = require("../../middleware/redis/usersRedis");
+const checkLogin = require('../../middleware/signIn/loginUser')
+const cacheAll = require('../../middleware/redis/clearAllCache')
+const cacheUser = require('../../middleware/redis/clearUserCache')
 
-const nodemailer = require("nodemailer");
 
-require('dotenv').load()
+
 // Matches with "/api/users"
 
 router.route("/")
@@ -17,125 +20,69 @@ router.route("/")
       .catch(err => res.status(422).json(err))
   });
 
-router.route("/online")
-  .get((req, res) => {
-    // console.log("inside find online users")
-    users.findByOnline({})
-      .then(dbresults => {
-        // console.log("return for online users");
-        // console.log(dbresults)
-        res.json(dbresults)
-      })
-      .catch(err => res.status(422).json(err))
-  });
-
-router.route("/new")
-  .post((req, res) => {
-    // console.log("!!!!!!!!!!!")
-    // console.log(req.body)
-    users.create(req.body)
-      .then(dbresults => {
-        // console.log("getting ready to send email ")
-        // console.log(dbresults)
-        email.sendEmail(dbresults.email, dbresults.password)
-
-        res.json(dbresults)
-      })
-      .catch(err => res.status(422).json(err))
-  });
-
 
 router.route("/:id")
   .get((req, res) => {
-    users.findById(req.params.id)
+    cacheModule.redisForUsers(req.params.id)
+    .then(result => {
+      res.send(result)
+    })
+    .catch(err => res.status(422).json(err))
+
+  });
+
+  router.route("/new")
+  .post((req, res) => {
+    newUser.addUser(req.body)
       .then(dbresults => {
         res.json(dbresults)
       })
       .catch(err => res.status(422).json(err))
+
   });
 
-// login
-router.route("/login/:email")
+  router.route("/id/:id")
   .put((req, res) => {
-    let data = {
-      loggedIn: true,
-    }
-    // console.log("route for login")
-    // console.log(req.params.email)
-    // console.log(req.body.password)
-    users.login(req.params.email, req.body.password, data)
+    users.updateById(req.params.id, req.body)
       .then(dbresults => {
-        // console.log("return from login")
-        // console.log(dbresults)
+        // clear users cache
+        cacheUser.clear(req.params.id)
+        .then(cache => {
+          
+        })
+
         res.json(dbresults)
       })
       .catch(err => res.status(422).json(err))
   });
 
-
-// signout
-router.route("/signout/:id")
+  router.route("/signout/:id")
   .put((req, res) => {
     let data = {
       loggedIn: false,
     }
-    // console.log("route for login")
-    // console.log(req.params.email)
-    // console.log(req.body.password)
     users.signout(req.params.id, data)
       .then(dbresults => {
-        // console.log("return from signout")
-        // console.log(dbresults)
+        // clear redis cache for user id
+        
+        cacheAll.clear(req.params.id)
+        .then(cacheBack => {
+        })
         res.json(dbresults)
       })
       .catch(err => res.status(422).json(err))
   });
 
-
-
-// find by name and populate pictures for favorites
-router.route("/favorites/:name")
-
-  .get((req, res) => {
-    // console.log("@@@@@@@@@@@@@@@@@@")
-    users.findByNameAndPopulate(req.params.name)
-      .then(dbresults => {
-        // console.log("this is the populated result");
-        // console.log(dbresults)
-        // console.log(typeof(dbresults.favorites[0]))
-        res.json(dbresults)
-      })
-      .catch(err => res.status(422).json(err))
-  });
-
-
-// update by email
-router.route("/email/:email")
+  router.route("/login/:email")
   .put((req, res) => {
-    users.updateByEmail(req.params.email, req.body)
+    checkLogin.login(req.params.email, req.body.password)
       .then(dbresults => {
-        // console.log("this is updated user")
-        // console.log(dbresults)
         res.json(dbresults)
       })
       .catch(err => res.status(422).json(err))
   });
 
-// update by id
-router.route("/id/:id")
-  .put((req, res) => {
-    users.updateById(req.params.id, req.body)
-      .then(dbresults => {
-        // console.log("this is updated user")
-        // console.log(dbresults)
-        res.json(dbresults)
-      })
-      .catch(err => res.status(422).json(err))
-  });
-
-
-
-router.route("/:name")
+  router.route("/:name")
   .put((req, res) => {
     users.update(req.params.name, req.body)
       .then(dbresults => res.json(dbresults))
@@ -143,36 +90,32 @@ router.route("/:name")
   });
 
 // this route adds/removes favorites for specific user
-router.route("/favorites/:name")
-
+router.route("/favorites/:id")
   .put((req, res) => {
-    // console.log("made it here")
-    // console.log(req.params.name)
-    // console.log(req.body)
-    usersHelper.update(req.params.name, req.body)
+    addRemoveFav.updateFav(req.params.id, req.body)
       .then(dbresults => {
-        // console.log("back in business")
         res.json(dbresults)
       })
       .catch(err => res.status(422).json(err))
-
-
-
   });
 
-
-router.route("/:id")
+  router.route("/:id")
   .delete((req, res) => {
     users.removeById(req.params.id)
       .then(dbresults => res.json(dbresults))
       .catch(err => res.status(422).json(err))
   });
 
-
+  // this route is used to log in
+  router.route("/email/:email")
+  .get((req, res) => {
+   users.findByEmail(req.params.email)
+      .then(dbresults => {
+        res.json(dbresults)
+      })
+      .catch(err => res.status(422).json(err))
+    });
 
 
 module.exports = router;
-
-
-
 

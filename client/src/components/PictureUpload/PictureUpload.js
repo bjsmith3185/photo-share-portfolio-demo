@@ -18,7 +18,13 @@ const PictureUpload = (props) => (
       {props.showUploadAlert ? (
         <div className="pictureupload-alert-area text-center">
           <div className="pictureupload-upload-alert    center">Click Upload to Continue
-            <button className="pictureupload-upload-btn text-center" onClick={props.uploadFiles} disabled={!props.files}>Upload</button>
+            <button 
+            className="pictureupload-upload-btn text-center" onClick={props.uploadFiles} 
+            disabled={!props.files} 
+            accept="image/*"
+            >
+            Upload
+            </button>
           </div>
         </div>
 

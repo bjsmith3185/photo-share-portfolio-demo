@@ -1,9 +1,9 @@
 
 .nav-area {
-    background: black;
+    /* background: darkgray; */
     width: 100%;
 }
-.nav-link {
+/* .nav-link {
     margin-top: 5px;
     margin-bottom: 5px;
     margin-left: 25px;
@@ -12,12 +12,26 @@
     font-weight: bold;
     display: inline-block
 
+} */
+
+.home-lnk {
+    color: red !important;
+    font-size: 24px;
 }
 
+.navbar-toggler-icon {
+    color: red;
+}
+
+.nav-item {
+    margin-right: 25px;
+    font-size: 18px;
+    font-weight: bold
+}
 .nav-signout {
    float: right;
-   margin-top: 10px;
-   margin-right: 10px;
+   /* margin-top: 10px; */
+   /* margin-right: 10px; */
    cursor: pointer;
    color: white;
 }

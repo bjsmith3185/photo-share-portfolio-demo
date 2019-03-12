@@ -5,33 +5,19 @@
 
 }
 
-.userinfo-title {
-  font-size: 25px;
-  font-weight: bold;
-  color: blue;
-  text-decoration: underline;
-}
-
 .userinfo-form {
-  margin-top: 10px;
-  border-top: 2px solid black;
+  margin-top: 20px;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  
 }
-
-
-
-
-
-
-
-
-
-
 
 
 .userinfo-line {
   margin-top: 10px;
-  margin-left: 20px;
-  font-size: 18px;
+  margin-left: 4px;
+  font-size: 14px;
   font-weight: bold;
   padding: 5px;
 }
@@ -39,13 +25,13 @@
 .update-button {
   margin-left: 15px;
   height: 20px;
-  font-size: 14px;
+  font-size: 10px;
   background: orange;
   color: white;
   width: 50px;
   padding: 2px;
   border: 1px solid gray;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 .update-button:hover {
@@ -57,13 +43,13 @@
 .userinfo-update-btn {
   margin-left: 5px;
   height: 20px;
-  font-size: 14px;
+  font-size: 11px;
   background: green;
   color: black;
   width: 50px;
   padding: 2px;
   border: 1px solid gray;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 .userinfo-update-btn:hover {
@@ -75,12 +61,12 @@
 .userinfo-back {
   margin-left: 20px;
   height: 20px;
-  font-size: 14px;
+  font-size: 11px;
   width: 30px;
   background: red;
   color: black;
   border: 1px solid gray;
-  border-radius: 2px;
+  border-radius: 42px;
   padding: 3px;
 }
 
@@ -93,10 +79,53 @@
 
 
 
+@media (min-width: 476px) {
+  .userinfo-form {
+    width: 70%;
+    /* margin-left: 50px; */
+  }
+
+  .userinfo-line {
+    font-size: 16px;
+  }
+  
+  .update-button {
+    font-size: 14px;
+  }
+
+  .userinfo-update-btn {
+    font-size: 13px;
+  }
+   
+  .userinfo-back {
+    font-size: 13px;
+  }
+
+}
 
 
+@media (min-width: 768px) {
+  .userinfo-form {
+    width: 45%;
+    /* margin-left: 80px; */
+  }
 
+  .userinfo-line {
+    font-size: 18px;
+  }
+  
+  .update-button {
+    font-size: 16px;
+  }
 
+  .userinfo-update-btn {
+    font-size: 15px;
+  }
+   
+  .userinfo-back {
+    font-size: 15px;
+  }
+}
 
 
 

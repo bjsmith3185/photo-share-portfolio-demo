@@ -6,15 +6,10 @@ import AddNewUser from '../../components/AddNewUser';
 import Navigation from '../../components/Navigation';
 import UserIdBar from '../../components/UserIdBar';
 import AdminNavbar from "../../components/AdminNavbar";
-// import AllUsers from "../../components/AllUsers";
 import UpdateUser from "../../components/UpdateUser";
 import OnlineUsers from "../../components/OnlineUsers";
 import RemovePicture from '../../components/RemovePicture';
 import * as ROUTES from '../../constants/routes';
-// import PictureNavbar from '../../components/PictureNavbar';
-
-
-
 
 
 class Admin extends Component {
@@ -33,9 +28,14 @@ class Admin extends Component {
     authUser: false,
     admin: false,
 
+    // Current user's info
     name: "",
     email: "",
     _id: "",
+
+    // Create New User data
+    newUserName: "",
+    newUserEmail: "",
 
     showAddNewUser: false,
     showAllUsers: false,
@@ -65,12 +65,15 @@ class Admin extends Component {
     removeMenu: true,
     removeAllPic: false,
     removeSelectedPic: false,
-    // confirmSelected: false,
+    confirmSelected: false,
+    pictureToDelete: "",
+    awsKeyToDelete: "",
+    tempImageUrl: "",
+  
 
     allPictures: [],
 
     onlineUsers: [],
-
 
   };
 
@@ -79,20 +82,13 @@ class Admin extends Component {
     this.checkIfUserExists();
   }
 
-  // componentWillUnmount() {
-
-  // }
-
-
 
   onChange = event => {
-    // console.log("in the onchange()")
     this.setState({ [event.target.name]: event.target.value });
   };
 
   signOut = () => {
-    console.log("signing out")
-    let _id = sessionStorage.getItem("_id");
+     let _id = sessionStorage.getItem("_id");
 
     API.signOutUser(_id)
       .then(res => {
@@ -110,8 +106,6 @@ class Admin extends Component {
 
     API.getUser(_id)
       .then(res => {
-        // console.log("users info")
-        // console.log(res.data)
 
         if (res.data === null) {
           this.setState({
@@ -141,21 +135,21 @@ class Admin extends Component {
   addUser = (event) => {
     event.preventDefault();
 
+    // lowercase
     let newUser = {
       name: this.state.username,
-      email: this.state.useremail,
+      email: this.state.useremail.toLowerCase(),
 
     }
 
     API.addUser(newUser)
       .then((res) => {
-        // console.log("added new user to database")
-        // console.log(res.data)
+        console.log("added new user to database")
+
         this.setState({
-          name: "",
-          email: "",
+          username: "",
+          useremail: "",
         })
-        this.getAllUsers();
         this.viewAllUsers();
       })
       .catch(error => {
@@ -163,52 +157,11 @@ class Admin extends Component {
       });
   };
 
-  getOnlineUsers = () => {
-    API.getAllUsers()
-      .then(res => {
-        // console.log("all users info")
-        // console.log(res.data)
-
-        if (res.data === null) {
-          console.log("no users")
-        } else {
-          this.setState({
-            // usersView: true,
-            allUsers: res.data
-          })
-        }
-
-      })
-      .catch(error => {
-        console.log(error)
-      });
-
-    // API.getOnlineUsers()
-    //   .then(res => {
-    //     console.log("all online users info")
-    //     console.log(res.data)
-
-    //     if (res.data === null) {
-    //       console.log("no online users")
-    //     } else {
-    //       this.setState({
-    //         // usersView: true,
-    //         onlineUsers: res.data
-    //       })
-    //     }
-
-    //   })
-    //   .catch(error => {
-    //     console.log(error)
-    //   });
-  };
-
-  getAllUsers = () => {
+  
+  findAllUsers = () => {
 
     API.getAllUsers()
       .then(res => {
-        // console.log("all users info")
-        // console.log(res.data)
 
         if (res.data === null) {
           console.log("no users")
@@ -226,24 +179,28 @@ class Admin extends Component {
   };
 
 
-  // opens a modal to confirm before deleting a picture 
-  // confirmSelectedPicDelete = () => {
-  //   console.log("confrim to delete pic")
-  //   this.setState({
-  //     confirmSelected: true,
-  //   })
-  // };
+  preDeleteSelectedPic = (id, awsKey, imageUrl) => {
 
-  // is triggered from the modal and removes the picture
-  selectPicDelete = (id) => {
-    // console.log("this is the function to remove the picture: " + id)
+    this.setState({
+      confirmSelected: true,
+      pictureToDelete: id,
+      awsKeyToDelete: awsKey,
+      tempImageUrl: imageUrl,
+    })
+  };
 
-    API.removeOnePicture(id)
+
+  selectPicDelete = () => {
+    let data = {
+      awsKey: this.state.awsKeyToDelete,
+      user_id: this.state._id,
+    }
+
+    API.removeOnePicture(this.state.pictureToDelete, data)
       .then((res) => {
-        // console.log("removed a pictures")
-        // console.log(res.data)
+   
         this.setState({
-          // confirmSelected: false,
+          confirmSelected: false,
           value: "",
 
         })
@@ -258,18 +215,16 @@ class Admin extends Component {
   getAllPicturesToRemove = () => {
     API.getAllPictures()
       .then(res => {
-        // console.log("$$$$$$$$$$$$$ all pictures")
-        // console.log(res.data)
         this.setState({
           getAllPicturesToRemove: res.data
         })
       })
       .catch(err => console.log(err));
   };
+  
 
   // this give the user the opportunity to confirm delete all
   menuDeleteAll = () => {
-    // console.log("confirming delete all")
     this.setState({
       removeAllPic: true,
       removeSelectedPic: false,
@@ -278,22 +233,20 @@ class Admin extends Component {
   };
 
   cancelDeletePic = () => {
-    // console.log("canceling delete")
     this.setState({
       removeAllPic: false,
       removeSelectedPic: false,
       removeMenu: true,
+      confirmSelected: false,
     })
 
   };
 
   // function to remove all pictures
   removeAllPictures = () => {
-
-    API.removeAllPictures()
+    API.removeAllPictures(this.state._id)
       .then((res) => {
-        // console.log("removed all pictures")
-        // console.log(res.data)
+
         this.viewAllUsers();
       })
       .catch(error => {
@@ -303,7 +256,6 @@ class Admin extends Component {
 
   // let the user choose to remove one or all pictures
   menuRemoveSelectedPic = () => {
-    // console.log(" remove selected")
     this.setState({
       removeAllPic: false,
       removeSelectedPic: true,
@@ -335,12 +287,11 @@ class Admin extends Component {
       showModifyUsers: false,
       confirmDelete: false,
     })
-    this.getOnlineUsers();
+    this.findAllUsers();
   };
 
 
   viewRemovePicture = () => {
-    // console.log("view remove pic")
     this.setState({
       showAddNewUser: false,
       showAllUsers: false,
@@ -356,7 +307,6 @@ class Admin extends Component {
   };
 
   viewModifyUser = () => {
-    // console.log("modify user clicked")
     this.setState({
       showAddNewUser: false,
       showAllUsers: false,
@@ -370,7 +320,6 @@ class Admin extends Component {
   };
 
   viewDeleteUser = () => {
-    // console.log("delete user")
     this.setState({
       showAddNewUser: false,
       showAllUsers: false,
@@ -390,11 +339,7 @@ class Admin extends Component {
     })
     API.getAllUsers()
       .then(res => {
-        // console.log("all users info")
-        // console.log(res.data)
-
         let defaultId = res.data[0]._id;
-        // console.log(`default name is ${defaultId}`)
 
         this.setState({
           allNames: res.data,
@@ -407,16 +352,13 @@ class Admin extends Component {
   };
 
   handleChange = (e) => {
-    // console.log("in handlechange()")
     this.setState({ value: e.target.value });
   };
 
 
 
   selectUser = (event) => {
-    // console.log(this.state.value)
     event.preventDefault();
-    // console.log("selecting user: " + this.state.value)
     this.setState({
       showUpdatingUser: true,
     })
@@ -424,12 +366,8 @@ class Admin extends Component {
   };
 
   updateUser = (id) => {
-    // console.log("update")
-    // console.log(id)
     API.getUser(id)
       .then((res) => {
-        // console.log("user info")
-        // console.log(res.data)
         this.setState({
           oldUsername: res.data.name,
           oldUseremail: res.data.email,
@@ -438,8 +376,6 @@ class Admin extends Component {
           useremail: res.data.email,
           idToUpdate: res.data._id,
           userAdmin: res.data.admin,
-          // viewUpdateUser: true,
-
         })
       })
       .catch(error => {
@@ -449,8 +385,7 @@ class Admin extends Component {
 
   submitUpdatedUser = (event) => {
     event.preventDefault();
-    // console.log(id)
-    // console.log(this.state.idToUpdate);
+
     let data = {};
     if (this.state.resetPassword) {
       data = {
@@ -468,12 +403,8 @@ class Admin extends Component {
       }
     }
 
-    // console.log(data)
-
     API.updateUser(this.state.oldUsername, data)
       .then((res) => {
-        // console.log("updated user info")
-        // console.log(res.data)
         this.setState({
           viewUpdateUser: false,
           username: "",
@@ -484,7 +415,7 @@ class Admin extends Component {
           showModifyUsers: false,
 
         })
-        this.getAllUsers();
+        this.findAllUsers();
 
       })
       .catch(error => {
@@ -495,13 +426,10 @@ class Admin extends Component {
   };
 
   removeUser = (event) => {
-    // console.log(this.state.value)
     event.preventDefault();
-    // console.log("removing user: " + this.state.value)
 
     for (var i = 0; i < this.state.allNames.length; i++) {
       if (this.state.value === this.state.allNames[i]._id) {
-        // console.log(this.state.allNames[i].name)
         this.setState({
           removeName: this.state.allNames[i].name,
           confirmDelete: true,
@@ -525,22 +453,15 @@ class Admin extends Component {
   }
 
   deleteUser = () => {
-    // console.log("delete")
-    // console.log(id)
 
     API.deleteUser(this.state.value)
       .then((res) => {
-        // console.log("deleted user")
-        // console.log(res.data)
         this.viewAllUsers();
       })
       .catch(error => {
         this.setState({ error });
       });
   };
-
-
-
 
 
 
@@ -717,9 +638,10 @@ class Admin extends Component {
 
 
                 pictures={this.state.getAllPicturesToRemove}
-                // confirmSelected={this.state.confirmSelected}
+                confirmSelected={this.state.confirmSelected}
                 selectPicDelete={this.selectPicDelete}
-                // confirmSelectedPicDelete={this.confirmSelectedPicDelete}
+                preDeleteSelectedPic={this.preDeleteSelectedPic}
+                tempImageUrl={this.state.tempImageUrl}
 
               />
             ) : (
